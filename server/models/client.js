@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const ClientSchema = new mongoose.Schema({
-    title: String,
+    position: String,
     name: String,
     email: String,
     phone: String,
@@ -12,7 +12,8 @@ const ClientSchema = new mongoose.Schema({
     interests: String,
     managerName: String,
     managerTitle: String,
-    fidessaAdvocate: Boolean
+    fidessaAdvocate: Boolean,
+    mpid: String
 });
 
 const Client = mongoose.model('Client', ClientSchema);

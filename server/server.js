@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const {mongoose} = require('./db/mongoose');
 
 // require routes
-// const clients = require()
+const coverage = require('./routes/coverageRoutes');
 
 // init app
 const app = express();
@@ -17,6 +17,10 @@ const port = process.env.PORT;
 
 // treat all requests as json
 app.use(bodyParser.json());
+
+//set routes
+
+app.use('/coverage', coverage);
 
 
 // start server
