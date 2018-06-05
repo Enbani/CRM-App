@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 
 const {mongoose} = require('./db/mongoose');
 
+// require routes
+// const clients = require()
+
 // init app
 const app = express();
 
