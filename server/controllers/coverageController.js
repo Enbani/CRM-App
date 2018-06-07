@@ -10,7 +10,7 @@ var getClientCoverage = async (req, res) => {
         let contacts = await Coverage.find({mpid})
         
         if (!contacts) {
-            res.stastus(404).send({error: "No coverage contacts found"});
+          return res.stastus(404).send({error: "No coverage contacts found"});
         }
         
         res.status(200).send({contacts});
@@ -19,7 +19,6 @@ var getClientCoverage = async (req, res) => {
         res.status(400).send({error: err});
     }
 };
-
 
 // controller to add a coverage contact
 var addCoverageContact = async (req, res) => {
@@ -32,9 +31,10 @@ var addCoverageContact = async (req, res) => {
     
     try {
         let newContact = await contact.save();
+        
         res.status(200).send({
             message: "The coverage contact you entered was successfully saved.",
-            contact
+            newContact
         });
         
         

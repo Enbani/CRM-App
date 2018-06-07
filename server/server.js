@@ -8,6 +8,7 @@ const {mongoose} = require('./db/mongoose');
 
 // require routes
 const coverage = require('./routes/coverageRoutes');
+const clients = require('./routes/clientsRoutes');
 
 // init app
 const app = express();
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 //set routes
 
 app.use('/coverage', coverage);
+app.use('/clients', clients)
 
 
 // start server
