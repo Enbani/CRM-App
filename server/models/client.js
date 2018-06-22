@@ -13,7 +13,8 @@ const ClientSchema = new mongoose.Schema({
     managerName: String,
     managerTitle: String,
     fidessaAdvocate: Boolean,
-    mpid: String
+    mpid: String,
+    comments: String
 });
 
 const Client = mongoose.model('Client', ClientSchema);
