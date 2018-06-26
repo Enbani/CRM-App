@@ -12,6 +12,7 @@ const coverage = require('./routes/coverageRoutes');
 const clients = require('./routes/clientsRoutes');
 const bios = require('./routes/biosRoutes');
 const pages = require('./routes/pagesRoutes');
+const source = require('./routes/sourceRoutes');
 
 
 // init app
@@ -32,6 +33,7 @@ app.use('/coverage', coverage);
 app.use('/clients', clients);
 app.use('/bios', bios);
 app.use('/pages', pages);
+app.use('/source', source);
 
 // render pages
 
