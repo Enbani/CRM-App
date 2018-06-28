@@ -41,6 +41,8 @@ const getSourceInfo = async (req, res) => {
 };
 
 const updateSourceInfo = async (req, res) => {
+    let { qvm } = req.params;
+    
     let data = _.pick(req.body, ['clientMnemonic', 'clientName', 'service', 
     'dm', 'ldm', 'cdm', 'subRegion', 'regionOwningRelationship', 'tier', 
     'clientClass', 'servicePlatform', 'sdTl', 'sdManager', 'sdTeam', 'goLiveDate',
@@ -49,7 +51,7 @@ const updateSourceInfo = async (req, res) => {
     
     try {
         let source = await Source.findOneAndUpdate(
-            {qvm: data.qvm},
+            {qvm},
             {$set: data},
             {new: true}
             );

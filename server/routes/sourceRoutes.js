@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.post('/', addSourceInfo);
 router.get('/:qvm', getSourceInfo);
-router.patch('/', updateSourceInfo);
+router.patch('/:qvm', updateSourceInfo);
 
 module.exports = router;
 
