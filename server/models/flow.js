@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const FlowSchema = new mongoose.Schema({
     flowType: String,
     supported: Boolean,
+    adjacent: Boolean,
     systems: [String]
 });
 

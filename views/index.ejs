@@ -38,7 +38,7 @@
                     <% source.forEach(function(data){ %>
                     <div class="card" style="width: 18rem;">
                       <div class="card-body">
-                        <h5 class="card-title"><%= data.clientMnemonic %></h5>
+                        <a href="/pages/<%= data.clientMnemonic %>"><h5 class="card-title"><%= data.clientMnemonic %></h5></a>
                         <h6 class="card-subtitle mb-2 text-muted"><%= data.clientClass %></h6>
                         <p class="card-text"><%= data.dm %></p>
 

@@ -3,7 +3,7 @@ const { Flow } = require('../models/flow');
 const mongoose = require('mongoose');
 
 const addFlow = async (req, res) => {
-    let data = _.pick(req.body, ['flowType', 'supported', 'systems']);
+    let data = _.pick(req.body, ['flowType', 'supported', 'systems', 'adjacent']);
     
     let flow = new Flow(data);
     
@@ -22,7 +22,7 @@ const addFlow = async (req, res) => {
 const updateFlow = async (req, res) => {
     let { flowType } = req.params;
     
-    let data = _.pick(req.body, ['flowType', 'supported', 'systems']);
+    let data = _.pick(req.body, ['flowType', 'supported', 'systems', 'adjacent']);
     
     try {
         let flow = await Flow.findOneAndUpdate(
