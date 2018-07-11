@@ -4,6 +4,7 @@ const SourceSchema = new mongoose.Schema({
     clientMnemonic: String,
     clientName: String,
     service: String,
+    serviceLine: String,
     dm: String,
     ldm: String,
     cdm: String,

@@ -9,8 +9,8 @@ const {
 const router = express.Router();
 
 router.post('/', addSourceInfo);
-router.get('/:qvm', getSourceInfo);
-router.patch('/:qvm', updateSourceInfo);
+router.get('/:clientMnemonic', getSourceInfo);
+router.patch('/:clientMnemonic', updateSourceInfo);
 
 module.exports = router;
 

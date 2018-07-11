@@ -79,21 +79,21 @@ const axios = require('axios');
 // deleteContact('5b19980743018c385c096387');
 
 // var bio = {
-//     mpid: 'HSBC-US',
-//     mpidDescription: 'HSBC',
-//     address: 'Hong Kong',
+//     mpid: 'ZASX-US',
+//     mpidDescription: 'ZASX Asset Management',
+//     address: '4567 Main Street, Virginia, VA 56210',
 //     clientBio: 'placeholder text',
 //     service: 'Hosted',
 //     serviceLine: 'Equities',
 //     region: 'US',
 //     clientClass: 'A',
-//     platform: 'XTP',
+//     platform: 'USTP',
 //     activeDate: '1/2/2018',
 //     status: 'active'
 // }
 
 // const addClientBios = (data) => {
-//      axios.post(`http://localhost:3000/bios`, data)
+//      axios.post(`http://localhost:8080/bios`, data)
 //         .then((res) => console.log(res.data))
 //         .catch((e) => console.log(e))
 // };
@@ -125,17 +125,18 @@ const axios = require('axios');
 // getRenderPageInfo('HSBC-US');
 
 const source = {
-    clientMnemonic: 'RBOS-US',
-    clientName: 'Royal Bank of Scotland',
+    clientMnemonic: 'ZASX-US',
+    clientName: 'ZASX',
     service: 'Hosted',
+    serviceLine: 'Equities',
     dm: 'Mrs. DM',
     ldm: 'Mr. LDM',
     cdm: 'Ms. CDM',
     subRegion: 'US',
     regionOwningRelationship: 'AMER',
-    tier: 'Tier 1',
-    clientClass: 'Class A',
-    servicePlatform: 'GTP',
+    tier: 'Tier 2',
+    clientClass: 'Class B',
+    servicePlatform: 'XTP',
     sdTl: 'Luigi Plumber',
     sdManager: 'Mario Plumber',
     sdTeam: 'Team B',
@@ -145,10 +146,10 @@ const source = {
     noticeGoLiveDate: '4/1/2012',
     decomDate: 'N/A',
     decommissioned: 'No',
-    fidUnqiueClientId: 'ABCD',
+    fidUnqiueClientId: 'FGHI',
     csTeam: 'Team A',
     csTl: 'Tron',
-    qvm: 'RBOS'
+    qvm: 'ZASX'
 }
 
 // const addGoldenSourceInfo = (data) => {
@@ -167,10 +168,18 @@ const source = {
 
 // getSourceInfo('RBCO');
 
-const updateSourceInfo = (data, mpid) => {
-    axios.patch(`http://localhost:8080/source/${mpid}`, data)
+// const updateSourceInfo = (data, mpid) => {
+//     axios.patch(`http://localhost:8080/source/${mpid}`, data)
+//         .then((res) => console.log(res.data))
+//         .catch((e) => console.log(e));
+// };
+
+// updateSourceInfo(source, 'HSBC-US');
+
+const getIndex = () => {
+    axios.get('http://localhost:8080/pages')
         .then((res) => console.log(res.data))
-        .catch((e) => console.log(e));
+        .catch((e) => console.log(e))
 };
 
-updateSourceInfo(source, 'RBOS');
+getIndex();

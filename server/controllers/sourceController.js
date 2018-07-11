@@ -7,7 +7,7 @@ const addSourceInfo = async (req, res) => {
     'dm', 'ldm', 'cdm', 'subRegion', 'regionOwningRelationship', 'tier', 
     'clientClass', 'servicePlatform', 'sdTl', 'sdManager', 'sdTeam', 'goLiveDate',
     'accountManager', 'noticeEmail', 'noticeGoLiveDate', 'decomDate', 
-    'decommissioned', 'fidUnqiueClientId', 'csTeam', 'csTl', 'qvm']);
+    'decommissioned', 'fidUnqiueClientId', 'csTeam', 'csTl', 'qvm', 'serviceLine']);
     
     let source = new Source(data);
     
@@ -25,13 +25,13 @@ const addSourceInfo = async (req, res) => {
 };
 
 const getSourceInfo = async (req, res) => {
-    let { qvm } = req.params;
+    let { clientMnemonic } = req.params;
     
     try {
-        let source = await Source.find({qvm});
+        let source = await Source.find({clientMnemonic});
         
         if (!source) {
-            return res.status(404).send({error: `No source info found for ${qvm}`})
+            return res.status(404).send({error: `No source info found for ${clientMnemonic}`})
         }
         
         return res.status(200).send({source});
@@ -41,27 +41,27 @@ const getSourceInfo = async (req, res) => {
 };
 
 const updateSourceInfo = async (req, res) => {
-    let { qvm } = req.params;
+    let { clientMnemonic } = req.params;
     
     let data = _.pick(req.body, ['clientMnemonic', 'clientName', 'service', 
     'dm', 'ldm', 'cdm', 'subRegion', 'regionOwningRelationship', 'tier', 
     'clientClass', 'servicePlatform', 'sdTl', 'sdManager', 'sdTeam', 'goLiveDate',
     'accountManager', 'noticeEmail', 'noticeGoLiveDate', 'decomDate', 
-    'decommissioned', 'fidUnqiueClientId', 'csTeam', 'csTl', 'qvm']);
+    'decommissioned', 'fidUnqiueClientId', 'csTeam', 'csTl', 'qvm', 'serviceLine']);
     
     try {
         let source = await Source.findOneAndUpdate(
-            {qvm},
+            {clientMnemonic},
             {$set: data},
             {new: true}
             );
         
         if (!source) {
-            return res.status(404).send({error: `Info for ${data.qvm} not found.`})
+            return res.status(404).send({error: `Info for ${data.clientMnemonic} not found.`})
         }
         
         res.status(200).send({
-            message: `${data.qvm} was updated successfully`,
+            message: `${data.clientMnemonic} was updated successfully`,
             source
         })
     } catch (err) {

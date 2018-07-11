@@ -37,10 +37,10 @@
     <div class="container-fluid border border-dark p-3 text-center">
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12">
-          <h1><%= bio[0].mpid %></h1>
+          <h1><%= source[0].clientMnemonic %></h1>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
-          <h1><%= bio[0].mpidDescription %></h1>
+          <h1><%= source[0].clientName %></h1>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
           <a href="" target="_blank"><p><%= bio[0].address %></p>
@@ -71,7 +71,7 @@
           <div class="card border-dark mb-3" >
             <div class="card-header text-center">Service</div>
             <div class="card-body">
-              <h5 class="card-title text-center"><%= bio[0].service %></h5>
+              <h5 class="card-title text-center"><%= source[0].service %></h5>
           </div>
          </div>
         </div>
@@ -79,7 +79,7 @@
           <div class="card border-dark mb-3" >
             <div class="card-header text-center">Service Line</div>
             <div class="card-body">
-              <h5 class="card-title text-center"><%= bio[0].serviceLine %></h5>
+              <h5 class="card-title text-center"><%= source[0].serviceLine %></h5>
           </div>
          </div>
         </div>
@@ -87,7 +87,7 @@
           <div class="card border-dark mb-3" >
             <div class="card-header text-center">Sub Region</div>
             <div class="card-body">
-              <h5 class="card-title text-center"><%= bio[0].region %></h5>
+              <h5 class="card-title text-center"><%= source[0].subRegion %></h5>
           </div>
          </div>
         </div>
@@ -95,7 +95,7 @@
           <div class="card border-dark mb-3" >
             <div class="card-header text-center">Class</div>
             <div class="card-body">
-              <h5 class="card-title text-center"><%= bio[0].clientClass %></h5>
+              <h5 class="card-title text-center"><%= source[0].clientClass %></h5>
           </div>
          </div>
         </div>
@@ -105,7 +105,7 @@
           <div class="card border-dark mb-3" >
             <div class="card-header text-center">Service Platform</div>
             <div class="card-body">
-              <h5 class="card-title text-center"><%= bio[0].platform %></h5>
+              <h5 class="card-title text-center"><%= source[0].servicePlatform %></h5>
           </div>
          </div>
         </div>
@@ -113,7 +113,7 @@
           <div class="card border-dark mb-3" >
             <div class="card-header text-center">Active/Inactive Date</div>
             <div class="card-body">
-              <h5 class="card-title text-center"><%= bio[0].activeDate %></h5>
+              <h5 class="card-title text-center"><%= source[0].goLiveDate %></h5>
           </div>
          </div>
         </div>
@@ -121,7 +121,7 @@
           <div class="card border-dark mb-3" >
             <div class="card-header text-center">Status</div>
             <div class="card-body">
-              <h5 class="card-title text-center"><%= bio[0].status %></h5>
+              <h5 class="card-title text-center"><%= source[0].status %></h5>
           </div>
          </div>
         </div>
