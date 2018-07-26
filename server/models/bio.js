@@ -15,7 +15,14 @@ const BioSchema = new mongoose.Schema({
     clientClass: String,
     platform: String,
     activeDate: String,
-    status: String
+    status: String,
+    flows: [{
+        flowType: String,
+        supported: Boolean,
+        adjacent: Boolean,
+        system: String,
+        duration: String
+    }]
     
 });
 

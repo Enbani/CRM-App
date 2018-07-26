@@ -6,156 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<style type="text/css">
-	@import "compass/css3";
-		div.editButton {
-			position: absolute;
-			top: 5px;
-			right: 10px;
-	}
-		
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-	}
 
-	li {
-		float: left;
-	}
-
-	li a {
-		display: block;
-		color: white;
-		text-align: center;
-		padding: 16px;
-		text-decoration: none;
-	}
-	</style>
-	
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-	
-	<script>
-	function saveBio(mpid) {
-	  console.log('this is mpid', mpid);
-		var text = document.getElementById("editClientBioTextArea").value;
-		
-		console.log('this is text', text);
-		document.getElementById("clientBioText").innerHTML = text;
-		document.getElementById("editClientBioTextArea").value="";
-		document.getElementById("editButton1").click();
-		
-		data = {
-			clientBio: text
-		};
-		
-		console.log('this is data', data);
-		
-		
-		const updateClientInfo = (client, body) => {
-		  
-	    axios.patch(`http://localhost:3000/bios/${client}`,body)
-        .then((res) => console.log(res.data))
-        .catch((e) => console.log(e));
-      
-	};
-	
-	updateClientInfo(mpid, data);
-
-// updateClientInfo('RBCO-US', {serviceLine: 'Derivatives', platform: 'GTP'});
-	}
-	
-	function cancelBio() {
-		document.getElementById("editButton1").click();
-		document.getElementById("editClientBioTextArea").value="";
-	}
-	function showSaveFC(no) {
-		document.getElementById("save_buttonFC"+no).disabled = false;
-	 }
-	 
-	function hideSaveFC(no) {
-		document.getElementById("save_buttonFC"+no).disabled = true;
-	 }
-	function save_rowFC(no)
-	{
-		var position_val=document.getElementById("position_text"+no).value;
-		var name_val=document.getElementById("name_text"+no).value;
-		var duration_val=document.getElementById("duration_text"+no).value;
-
-		document.getElementById("position_row"+no).innerHTML=position_val;
-		document.getElementById("name_row"+no).innerHTML=name_val;
-		document.getElementById("duration_row"+no).innerHTML=duration_val;
-	}
-
-	function delete_rowFC(no)
-	{
-		document.getElementById("rowFC"+no+"").outerHTML="";
-	}
-	
-	function add_rowFC()
-	{
-		if (document.getElementById("newPositionFC").value !== "" || document.getElementById("newNameFC").value !== "" || document.getElementById("newDuration").value !== "") {
-			var newPosition= document.getElementById("newPositionFC").value;
-			var newName= document.getElementById("newNameFC").value;
-			var newDuration= document.getElementById("newDuration").value;
-							
-			var table=document.getElementById("fidessaContacts");
-			var table_len=(table.rows.length)-1;
-			var row = table.insertRow(table_len).outerHTML="<tr id='rowFC"+table_len+"'><td id='position_row"+table_len+"' contenteditable='true' oninput='showSaveFC("+table_len+")'>"+newPosition+"</td><td id='name_row"+table_len+"' contenteditable='true' oninput='showSaveFC("+table_len+")'>"+newName+"</td><td id='duration_row"+table_len+"' contenteditable='true' oninput='showSaveFC("+table_len+")'>"+newDuration+"</td><td><ul><li><input type='button' id='save_buttonFC"+table_len+"' value='Save' class='save align-middle btn btn-sm btn-outline-success my-2 my-sm-0' onmousedown='save_rowFC("+table_len+")' onmouseup='hideSaveFC("+table_len+")'></li> <li><input type='button' value='Delete' class='delete align-middle btn btn-sm btn-outline-danger my-2 my-sm-0' onclick='delete_rowFC("+table_len+")'></li></ul></td></tr>";
-			document.getElementById("save_buttonFC"+table_len).disabled = true;
-							 
-			document.getElementById("newPositionFC").value="";
-			document.getElementById("newNameFC").value="";
-			document.getElementById("newDuration").value="";
-			}
-		document.activeElement.blur()
-	}
-	
-	function showSaveCC(no) {
-		document.getElementById("save_buttonCC"+no).disabled = false;
-	 }
-	 
-	function hideSaveCC(no) {
-		document.getElementById("save_buttonCC"+no).disabled = true;
-	 }
-	function save_rowCC(no)
-	{
-		var position_val=document.getElementById("position_text"+no).value;
-		var name_val=document.getElementById("name_text"+no).value;
-		var duration_val=document.getElementById("duration_text"+no).value;
-
-		document.getElementById("position_row"+no).innerHTML=position_val;
-		document.getElementById("name_row"+no).innerHTML=name_val;
-		document.getElementById("duration_row"+no).innerHTML=duration_val;
-	}
-
-	function delete_rowCC(no)
-	{
-		document.getElementById("rowCC"+no+"").outerHTML="";
-	}
-	
-	function add_rowCC()
-	{
-		if (document.getElementById("newPositionCC").value !== "" || document.getElementById("newNameCC").value !== "" || document.getElementById("newFidessaAdvocate").value !== "") {
-			var newPosition= document.getElementById("newPositionCC").value;
-			var newName= document.getElementById("newNameCC").value;
-			var newFidessaAdvocate= document.getElementById("newFidessaAdvocate").value;
-							
-			var table=document.getElementById("clientContacts");
-			var table_len=(table.rows.length)-1;
-			var row = table.insertRow(table_len).outerHTML="<tr id='rowCC"+table_len+"'><td id='position_row"+table_len+"' contenteditable='true' oninput='showSaveCC("+table_len+")'>"+newPosition+"</td><td id='name_row"+table_len+"' contenteditable='true' oninput='showSaveCC("+table_len+")'>"+newName+"</td><td id='advocate_row"+table_len+"' contenteditable='true' oninput='showSaveCC("+table_len+")'>"+newFidessaAdvocate+"</td><td><ul><li><input type='button' id='save_buttonCC"+table_len+"' value='Save' class='save align-middle btn btn-sm btn-outline-success my-2 my-sm-0' onmousedown='save_rowCC("+table_len+")' onmouseup='hideSaveCC("+table_len+")'></li> <li><input type='button' value='Delete' class='delete align-middle btn btn-sm btn-outline-danger my-2 my-sm-0' onclick='delete_rowCC("+table_len+")'></li></ul></td></tr>";
-			document.getElementById("save_buttonCC"+table_len).disabled = true;
-							 				 
-			document.getElementById("newPositionCC").value="";
-			document.getElementById("newNameCC").value="";
-			document.getElementById("newFidessaAdvocate").value="";
-			}
-		document.activeElement.blur()
-	}
-	</script>
-	
     <title>JEFFERIES CRM</title>
   </head>
   <body>
@@ -172,12 +23,12 @@
                                     <a class="nav-link" href="#">CRM Home <span class="sr-only">(current)</span></a>
                           </li>
                           <li class="nav-item">
-                                    <a class="nav-link" href="#">Edit</a>
+                                    <a class="nav-link" href="#">EDIT</a>
                           </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0">
                           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
               </div>
             </nav>
@@ -203,39 +54,7 @@
                         <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <h1>Client Bio</h1>
-												<div id="clientBio">
-													<p id="clientBioText"><%= bio[0].clientBio %></p>
-													<div class="editButton">
-														<button id="editButton1" class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="button" data-toggle="collapse" data-target="#editClientBio" aria-expanded="false" aria-controls="editClientBio">
-														Edit
-														</button>
-													</div>
-													<div class="row">
-														<div class="col">
-															<div class="collapse multi-collapse" id="editClientBio">
-																<div class="card card-body">
-																	<textarea class="form-control" id="editClientBioTextArea" rows="3"></textarea>
-																	<ul>
-																	<li>
-																	<div class="row">
-																		<div class="col">
-																			<button type="submit" class="btn btn-sm btn-outline-success my-2 my-sm-0" onclick='saveBio("<%= source[0].clientMnemonic %>")'>Save</button>
-																		</div>
-																	</div>
-																	</li>
-																	<li>
-																	<div class="row">
-																		<div class="col">
-																			<button type="cancel" class="btn btn-sm btn-outline-secondary my-2 my-sm-0" onclick='cancelBio()'>Cancel</button>
-																		</div>
-																	</div>
-																	</li>
-																	</ul>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
+                                                <p><%= bio[0].clientBio %></p>
                                     </div>
                         </div>
             </div>
@@ -315,7 +134,7 @@
                         <div class="row">
         <div class="col-lg-6 col-md-12 col-sm-12 border border-dark p-5">
                                     <h1>Fidessa Contacts</h1>
-            <table class="table table-sm table-bordered" id = "fidessaContacts">
+            <table class="table table-sm table-bordered">
               <thead class="thead-dark">
                 <tr>
                   <th class="align-middle" scope="col">Title</th>
@@ -324,38 +143,19 @@
                 </tr>
               </thead>
               <tbody>
-                <% coverage.forEach(function(data, index){ %>
+                <% coverage.forEach(function(data){%>
                 <tr>
-                  <th scope="row"><input type='text' id='newPositionFC' value='<%= data.position %>'></th>
-                  <td><input type='text' id='newNameFC' value='<%= data.name %>'></td>
-                  <td><input type='text' id='newDuration' value='<%= data.coverageStart %> - <%= data.coverageEnd %>'></td>
-				  <td><ul><li><button id="addRowFC" class="add align-middle btn btn-sm btn-outline-success my-2 my-sm-0" type="submit" onclick="add_rowFC();">Add Row</button></li></ul></td>
-		
-				  <script>
-					var newPosition= document.getElementById("newPositionFC").value;
-					var newName= document.getElementById("newNameFC").value;
-					var newDuration= document.getElementById("newDuration").value;
-							
-					var table=document.getElementById("fidessaContacts");
-					var table_len=(table.rows.length)-1;
-					var row = table.insertRow(table_len).outerHTML="<tr id='rowFC"+table_len+"'><td id='position_row"+table_len+"' contenteditable='true' oninput='showSaveFC("+table_len+")'>"+newPosition+"</td><td id='name_row"+table_len+"' contenteditable='true' oninput='showSaveFC("+table_len+")'>"+newName+"</td><td id='duration_row"+table_len+"' contenteditable='true' oninput='showSaveFC("+table_len+")'>"+newDuration+"</td><td><ul><li><input type='button' id='save_buttonFC"+table_len+"' value='Save' class='save align-middle btn btn-sm btn-outline-success my-2 my-sm-0' onmousedown='save_rowFC("+table_len+")' onmouseup='hideSaveFC("+table_len+")'></li> <li><input type='button' value='Delete' class='delete align-middle btn btn-sm btn-outline-danger my-2 my-sm-0' onclick='delete_rowFC("+table_len+")'></li></ul></td></tr>";					
-					document.getElementById("save_buttonFC"+table_len).disabled = true;
-				  </script>
-				  
-				  <% if (index === coverage.length - 1){ %>
-				  <script>
-					document.getElementById("newPositionFC").value="";
-					document.getElementById("newNameFC").value="";
-					document.getElementById("newDuration").value="";
-				  </script>
+                  <th scope="row"><%= data.position %></th>
+                  <td><%= data.name %></td>
+                  <td><%= data.coverageStart %> - <%= data.coverageEnd %></td>
                 </tr>
-                <% }}); %>
+                <% }); %>
               </tbody>
             </table>
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 border border-dark p-5">
           <h1>Client Contacts</h1>
-          <table class="table table-sm table-bordered" id="clientContacts">
+          <table class="table table-sm table-bordered">
               <thead class="thead-dark">
                 <tr>
                   <th class="align-middle" scope="col">Title</th>
@@ -364,14 +164,11 @@
                 </tr>
               </thead>
               <tbody>
-                <% client.forEach(function(data){ %>
+                <% client.forEach(function(data){%>
                   <tr>
-                    <th scope="row"><input type='text' id='newPositionCC' value='<%= data.position %>'></th>
-                    <td><input type='text' id='newNameCC' value='<%= data.name %>'></td>
-                    <td><input type='text' id='newFidessaAdvocate' value='<%= data.fidessaAdvocate %>'</td>
-					<td><ul><li><button id="addRowCC" class="add align-middle btn btn-sm btn-outline-success my-2 my-sm-0" type="submit" onclick="add_rowCC();">Add Row</button></li></ul></td>
-					
-					<script>document.getElementById("addRowCC").click();</script>
+                    <th scope="row"><%= data.position %></th>
+                    <td><%= data.name %></td>
+                    <td><%= data.fidessaAdvocate %></td>
                   </tr>
                 <% }); %>
               </tbody>
@@ -381,23 +178,6 @@
                         <div class="row">
                                     <div class="col-lg-6 col-md-12 col-sm-12 border border-dark p-5">
                                                 <h1>Fidessa used Flows</h1>
-													<table class="table table-sm table-bordered" id="fidessaFlows">
-														<thead class="thead-dark">
-															<tr>
-															  <th class="align-middle" scope="col">Flow Type</th>
-															  <th class="align-middle" scope="col">System</th>
-															  <th class="align-middle" scope="col">Comments</th>
-															</tr>
-														</thead>
-														<tbody>
-															<% var fidessaUsedFlows = bio[0].flows.filter((item) => item.supported === true && item.system === 'Fidessa' )
-															   fidessaUsedFlows.forEach(function(data){ %>
-															   <th scope="row"><input type='text' id='newFlowType' value='<%= fidessaUsedFlows.flow.flowType %>'></th>
-															   <td><input type='text' id='newSystem' value='<%= fidessaUsedFlows.flow.system %>'></td>
-															   <td><input type='text' id='newComments' value='<%= fidessaUsedFlows.flow.comments %>'></td>
-															<% }) %>
-														</tbody>
-													</table>
 <!--                                           <div class="list-group">
                                                             <a href="#" class="list-group-item list-group-item-action">Equities</a>
                                                             <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Principal Trading</a>
@@ -425,25 +205,9 @@
                                                 </div>
                                     </div>-->
                         </div>
+                        <div class="row">
                                     <div class="col-lg-6 col-md-12 col-sm-12 border border-dark p-5">
                                                 <h1>Adjacent Systems</h1>
-												<table class="table table-sm table-bordered" id="adjacentSystems">
-														<thead class="thead-dark">
-															<tr>
-															  <th class="align-middle" scope="col">Flow Type</th>
-															  <th class="align-middle" scope="col">System</th>
-															  <th class="align-middle" scope="col">Comments</th>
-															</tr>
-														</thead>
-														<tbody>
-															<% var fidessaAdjacentSystems = bio[0].flows.filter((flow) => flow.adjacent === 'yes')
-															   fidessaAdjacentSystems.forEach(function(data){ %>
-															   <th scope="row"><input type='text' id='newFlowTypeA' value='<%= fidessaAdjacentSystems.flow.flowType %>'></th>
-															   <td><input type='text' id='newSystemA' value='<%= fidessaAdjacentSystems.flow.system %>'></td>
-															   <td><input type='text' id='newCommentsA' value='<%= fidessaAdjacentSystems.flow.comments %>'></td>
-															<% }) %>
-														</tbody>
-													</table>
 <!--                                           <table class="table table-sm table-bordered">
                                                   <thead class="thead-dark">
                                                             <tr>
@@ -468,23 +232,6 @@
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12 border border-dark p-5">
                                                 <h1>Non-Adjacent Systems</h1>
-												<table class="table table-sm table-bordered" id="nonAdjacentSystems">
-														<thead class="thead-dark">
-															<tr>
-															  <th class="align-middle" scope="col">Flow Type</th>
-															  <th class="align-middle" scope="col">System</th>
-															  <th class="align-middle" scope="col">Comments</th>
-															</tr>
-														</thead>
-														<tbody>
-															<% var fidessaNonAdjacentSystems = bio[0].flows.filter((flow) => flow.adjacent === 'no')
-															   fidessaNonAdjacentSystems.forEach(function(data){ %>
-															   <th scope="row"><input type='text' id='newFlowTypeNA' value='<%= fidessaNonAdjacentSystems.flow.flowType %>'></th>
-															   <td><input type='text' id='newSystemNA' value='<%= fidessaNonAdjacentSystems.flow.system %>'></td>
-															   <td><input type='text' id='newCommentsNA' value='<%= fidessaNonAdjacentSystems.flow.comments %>'></td>
-															<% }) %>
-														</tbody>
-													</table>
 <!--                                           <table class="table table-sm table-bordered">
                                                   <thead class="thead-dark">
                                                             <tr>
