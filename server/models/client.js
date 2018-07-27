@@ -12,7 +12,7 @@ const ClientSchema = new mongoose.Schema({
     interests: String,
     managerName: String,
     managerTitle: String,
-    fidessaAdvocate: Boolean,
+    advocate: Boolean,
     mpid: String,
     comments: String
 });

@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 var addClientInfo = async (req, res) => {
     let data = _.pick(req.body, ['mpid', 'mpidDescription', 'address', 'clientBio',
     'service', 'serviceLine', 'region', 'clientClass', 'platform', 'activeDate',
-    'status']);
+    'status', 'flows']);
     
     let bio = new Bio(data);
     
