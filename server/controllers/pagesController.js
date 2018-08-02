@@ -14,8 +14,10 @@ const renderIndexPage = async (req, res) => {
     try {
         let source = await Source.find({}, {clientMnemonic: 1, clientClass: 1, dm: 1});
         
+        console.log('rendering');
         return res.render('index', {source});
     } catch (err) {
+        console.log('not rendering');
         res.status(400).send({error: err});
     }
 };

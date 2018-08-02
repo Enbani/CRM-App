@@ -124,33 +124,33 @@ const axios = require('axios');
 
 // getRenderPageInfo('HSBC-US');
 
-const source = {
-    clientMnemonic: 'ZASX-US',
-    clientName: 'ZASX',
-    service: 'Hosted',
-    serviceLine: 'Equities',
-    dm: 'Mrs. DM',
-    ldm: 'Mr. LDM',
-    cdm: 'Ms. CDM',
-    subRegion: 'US',
-    regionOwningRelationship: 'AMER',
-    tier: 'Tier 2',
-    clientClass: 'Class B',
-    servicePlatform: 'XTP',
-    sdTl: 'Luigi Plumber',
-    sdManager: 'Mario Plumber',
-    sdTeam: 'Team B',
-    goLiveDate: '3/1/2012',
-    accountManager: 'Rockerfeller',
-    noticeEmail: '3/1/2012',
-    noticeGoLiveDate: '4/1/2012',
-    decomDate: 'N/A',
-    decommissioned: 'No',
-    fidUnqiueClientId: 'FGHI',
-    csTeam: 'Team A',
-    csTl: 'Tron',
-    qvm: 'ZASX'
-}
+// const source = {
+//     clientMnemonic: 'ZASX-US',
+//     clientName: 'ZASX',
+//     service: 'Hosted',
+//     serviceLine: 'Equities',
+//     dm: 'Mrs. DM',
+//     ldm: 'Mr. LDM',
+//     cdm: 'Ms. CDM',
+//     subRegion: 'US',
+//     regionOwningRelationship: 'AMER',
+//     tier: 'Tier 2',
+//     clientClass: 'Class B',
+//     servicePlatform: 'XTP',
+//     sdTl: 'Luigi Plumber',
+//     sdManager: 'Mario Plumber',
+//     sdTeam: 'Team B',
+//     goLiveDate: '3/1/2012',
+//     accountManager: 'Rockerfeller',
+//     noticeEmail: '3/1/2012',
+//     noticeGoLiveDate: '4/1/2012',
+//     decomDate: 'N/A',
+//     decommissioned: 'No',
+//     fidUnqiueClientId: 'FGHI',
+//     csTeam: 'Team A',
+//     csTl: 'Tron',
+//     qvm: 'ZASX'
+// }
 
 // const addGoldenSourceInfo = (data) => {
 //     axios.post(`http://localhost:8080/source/`, data)
@@ -176,10 +176,48 @@ const source = {
 
 // updateSourceInfo(source, 'HSBC-US');
 
-const getIndex = () => {
-    axios.get('http://localhost:8080/pages')
+// const getIndex = () => {
+//     axios.get('http://localhost:8080/pages')
+//         .then((res) => console.log(res.data))
+//         .catch((e) => console.log(e))
+// };
+
+// getIndex();
+
+// const updateCoverageContact = (id, data) => {
+//     axios.put(`http://localhost:8080/coverage/${id}`, data)
+//         .then((res) => console.log(res.data))
+//         .catch((e) => console.log(e.response));
+// };
+
+// updateCoverageContact("5b2d20159161b311a31a7a07", {name: 'Tim Cookies'});
+
+// const updateACoverage = (id, data) => {
+//     axios.patch(`http://localhost:8080/coverage/${id}`, data)
+//         .then((res) => console.log(res.data))
+//         .catch((e) => console.log(e))
+// }
+
+// const body = {
+//     name: 'Don Smith',
+//     email: 'don.smith@example.com',
+//     twitterHandle: '@donsmithisaboss'
+// }
+
+// updateACoverage('5b2d20159161b311a31a7a07', body);
+
+// const deleteACoverage = (id) => {
+//     axios.delete(`http://localhost:8080/coverage/${id}`)
+//         .then((res) => console.log(res.data))
+//         .catch((e) => console.log(e))
+// };
+
+// deleteACoverage('5b2d20159161b311a31a7a07');
+
+const deleteCoverage = (id) => {
+    axios.delete(`http://localhost:8080/coverage/${id}`)
         .then((res) => console.log(res.data))
         .catch((e) => console.log(e))
-};
+}
 
-getIndex();
+deleteCoverage('5b2d20159161b311a31a7a07');
