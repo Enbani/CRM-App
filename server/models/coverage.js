@@ -5,7 +5,8 @@ const CoverageSchema = new mongoose.Schema({
     name: String,
     coverageStart: Date,
     coverageEnd: Date,
-    mpid: String
+    mpid: String,
+    active: Boolean,
 });
 
 const Coverage = mongoose.model('Coverage', CoverageSchema);

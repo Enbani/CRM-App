@@ -7,6 +7,40 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
+    <style type="text/css">
+	  @import "compass/css3";
+	  
+	  	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+    	}
+    	li {
+    		float: left;
+    </style>
+    
+    <script>
+      function filter() {
+        var input = document.getElementById('searchParameter');
+        var filter = input.value.toUpperCase();
+        var ul = document.getElementById('mpidList');
+        var li = ul.getElementsByTagName('li');
+        
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          h5 = a.getElementsByTagName("h5")[0];
+          h6 = li[i].getElementsByTagName("h6")[0];
+          p = li[i].getElementsByTagName("p")[0];
+          
+          if (h5.innerHTML.toUpperCase().indexOf(filter) > -1 || h6.innerHTML.toUpperCase().indexOf(filter) > -1 || p.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+        }
+      }
+    </script>
     <title>JEFFERIES CRM</title>
   </head>
   <body>
@@ -20,22 +54,24 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                           <li class="nav-item active">
-                                    <a class="nav-link" href="#">CRM Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
                           </li>
                           <li class="nav-item">
-                                    <a class="nav-link" href="#">EDIT</a>
+                                    <a class="nav-link" href="#"></a>
                           </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0">
-                          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                          <input id="searchParameter" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onkeyup="filter()">
+                          <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="filter()">Search</button>-->
                         </form>
               </div>
             </nav>
             
             <div class="container">
                 <div class="row">
+                  <ul id='mpidList'>
                     <% source.forEach(function(data){ %>
+                    <li>
                     <div class="card" style="width: 18rem;">
                       <div class="card-body">
                         <a href="/pages/<%= data.clientMnemonic %>"><h5 class="card-title"><%= data.clientMnemonic %></h5></a>
@@ -44,7 +80,9 @@
 
                       </div>
                     </div>
+                    </li>
                    <% });%>
+                  </ul> 
                 </div>
             </div>
   

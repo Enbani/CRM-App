@@ -23,7 +23,7 @@ var getClientContacts = async (req, res) => {
 var addClientContact = async (req, res) => {
     let data = _.pick(req.body, ['position', 'name', 'email', 'phone', 'mobile',
     'location', 'twitterHandle', 'interests', 'managerName', 'managerTitle',
-    'fidessaAdvocate', 'mpid', 'comments']);
+    'advocate', 'mpid', 'comments']);
     
     let contact = new Client(data);
     
@@ -48,7 +48,7 @@ var updateClientContact = async (req, res) => {
     
     let data = _.pick(req.body, ['position', 'name', 'email', 'phone', 'mobile',
     'location', 'twitterHandle', 'interests', 'managerName', 'managerTitle',
-    'fidessaAdvocate', 'mpid', 'comments']);
+    'advocate', 'mpid', 'comments']);
     
     try {
         let updatedContact = await Client.findOneAndUpdate(
@@ -74,10 +74,10 @@ var updateClientContact = async (req, res) => {
 // controller to delete a client contact
 
 var deleteClientContact = async (req, res) => {
-    let contactId = req.params.id;
+    let {id} = req.params;
     
     try {
-        let deletedContact = await Client.findOneAndRemove({_id: contactId})
+        let deletedContact = await Client.findOneAndRemove( { _id: id } )
         
         if (!deletedContact) {
             return res.status(404).send({error: 'No client with that ID exists.'})

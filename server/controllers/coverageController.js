@@ -24,7 +24,7 @@ var getClientCoverage = async (req, res) => {
 var addCoverageContact = async (req, res) => {
     
     let body = _.pick(req.body, ['position', 'name', 'coverageStart', 
-    'coverageEnd', 'mpid']);
+    'coverageEnd', 'mpid', 'active']);
     
     var contact = new Coverage(body);
     
@@ -43,8 +43,48 @@ var addCoverageContact = async (req, res) => {
     }
 };
 
+var deleteCoverageContact = async (req, res) => {
+    let {id} = req.params;
+    try {
+        let deletedContact = await Coverage.findOneAndRemove( { _id: id } );
+        
+        if (!deletedContact) {
+            return res.status(404).send({error: 'No coverage with that ID exists.'})
+        }
+        
+        res.status(200).send({
+            message: 'The contact was deleted successfully',
+            deletedContact
+        });
+    } catch (err) {
+        res.status(400).send({error: err});
+    }
+};
+
+var updateCoverageContact = async (req, res) => {
+    let {id} = req.params;
+    let data = _.pick(req.body, ['coverageStart', 'coverageEnd', 'active']);
+    
+    try{
+        let updatedContact = await Coverage.findOneAndUpdate( 
+            { _id: id},
+            {$set: data});
+        
+        if (!updatedContact) {
+            return res.status(404).send({error: 'No coverage with that ID exists.'})
+        }
+        res.status(200).send({
+            message: 'The contact was deleted successfully',
+            updatedContact
+        });
+    } catch (err) {
+        res.status(400).send({error: err});
+    }
+};
 
 module.exports = {
     getClientCoverage,
-    addCoverageContact
+    addCoverageContact,
+    deleteCoverageContact,
+    updateCoverageContact
 };

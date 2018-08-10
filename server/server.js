@@ -6,6 +6,8 @@ const path = require('path');
 
 
 const {mongoose} = require('./db/mongoose');
+var moment = require('moment');
+var shortDateFormat = "MM/DD/YYYY";
 
 // require routes
 const coverage = require('./routes/coverageRoutes');
@@ -13,6 +15,7 @@ const clients = require('./routes/clientsRoutes');
 const bios = require('./routes/biosRoutes');
 const pages = require('./routes/pagesRoutes');
 const source = require('./routes/sourceRoutes');
+const flow = require('./routes/flowRoutes');
 
 
 // init app
@@ -34,6 +37,9 @@ app.use('/clients', clients);
 app.use('/bios', bios);
 app.use('/pages', pages);
 app.use('/source', source);
+app.use('/flow', flow);
+app.locals.moment = moment;
+app.locals.shortDateFormat = shortDateFormat;
 
 // render pages
 

@@ -1,4 +1,4 @@
-const _ = require('loadsh');
+const _ = require('lodash');
 const { Flow } = require('../models/flow');
 const mongoose = require('mongoose');
 

@@ -21,7 +21,7 @@ const BioSchema = new mongoose.Schema({
         supported: Boolean,
         adjacent: Boolean,
         system: String,
-        duration: String
+        comment: String
     }]
     
 });
