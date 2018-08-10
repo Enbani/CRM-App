@@ -121,7 +121,6 @@
 	  var newID = document.getElementById("newID"+table).value;
 		var newSystem= document.getElementById("newFlowSystem"+table).value;
 		var newComment = document.getElementById("newFlowComments"+table).value;
-		console.log(newComment)
 		if (table === 'FF') {
       var tableType=document.getElementById("fidessaUsedSystems");
       var table_len=(tableType.rows.length)-1;
@@ -170,13 +169,13 @@
 			    var table=document.getElementById("fidessaContacts");
     			var table_len=(table.rows.length)-1;
     			var row = table.insertRow(table_len).outerHTML="<tr id='row"+client+table_len+"'><td id='positionRow"+client+table_len+"'>"+newPosition+"</td><td id='iDRow"+client+table_len+"' hidden>"+id+"</td><td id='nameRow"+client+table_len+"'>"+newName+"</td><td id='durationRow"+client+table_len+"'>"+newDuration+"</td><td class='options'><ul><li><button id='save_button"+client+table_len+"' class='save align-middle btn btn-sm btn-outline-success my-2 my-sm-0' onclick='saveContactRow("+JSON.stringify(client+table_len)+")'>Save</button></li> <li><button class='delete align-middle btn btn-sm btn-outline-danger my-2 my-sm-0' onclick='deleteRow("+JSON.stringify(client+table_len)+")'>Deactivate</button></li> <li><button id='edit_button"+client+table_len+"' class ='edit align-middle btn btn-sm btn-outline-secondary my-2 my-sm-0' onclick='editContactRow("+JSON.stringify(client+table_len)+")'>Edit</button></li> <li><button id='cancel_button"+client+table_len+"' class='cancel align-middle btn btn-sm btn-outline-secondary my-2 my-sm-0' onclick='cancelContactChanges("+JSON.stringify(client+table_len)+")'>Cancel</button></li></ul></td></tr>";
-    		  document.getElementById("newDuration").value="";
-      	  document.getElementById("newPosition"+client).value="";
-      		document.getElementById("newName"+client).value="";
-      		document.getElementById("save_button"+client+table_len).disabled = true;
-      		document.getElementById("cancel_button"+client+table_len).hidden = true;
+    			document.getElementById("newDuration").value="";
+	      		document.getElementById("newPosition"+client).value="";
+	      		document.getElementById("newName"+client).value="";
+	      		document.getElementById("save_button"+client+table_len).disabled = true;
+	      		document.getElementById("cancel_button"+client+table_len).hidden = true;
 			  }})
-			  .catch((e) => console.log(e.response.data.error))
+			  .catch((e) => console.log(e))
 			};
 			addCoverageContacts(data);
 			}
@@ -507,9 +506,6 @@
 		    axios.patch(`/coverage/${id}`, data)
 		    .then((res) => {if (res.status===200){
 		      document.getElementById("row"+type+no).outerHTML="";
-		      // document.getElementById("nameRow"+client+no).innerHTML=name;
-		      // document.getElementById("durationRow"+client+no).innerHTML=duration;
-		      // console.log(res)
 		    }})
 		    .catch((e) => console.log(e))
 		  }

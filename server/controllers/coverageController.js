@@ -82,6 +82,7 @@ var updateCoverageContact = async (req, res) => {
     }
 };
 
+
 module.exports = {
     getClientCoverage,
     addCoverageContact,
